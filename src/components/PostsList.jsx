@@ -6,25 +6,23 @@ import Modal from './Modal';
 import classes from "./PostsList.module.css";
 
 
-function PostsList(){
-    const [ modalIsVisible, setModalVisibility ] = useState(true);
+function PostsList({isCreatingPost, onFinishedPost}){
+
 
     const [ enteredBody, setEnteredBody ] = useState('');
     const [ enteredAuthor, setEnteredAuthor ] = useState('');
 
     let modalContent;
 
-    if (modalIsVisible){
+    if (isCreatingPost){
         modalContent = (
-        <Modal onClose={hideModalHandler}>
+        <Modal onClose={onFinishedPost}>
             <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler} />
         </Modal>
         );
     }
 
-    function hideModalHandler(){
-        setModalVisibility(false);
-    }
+
 
     function changeBodyHandler(event){
         setEnteredBody(event.target.value);
@@ -43,7 +41,7 @@ function PostsList(){
                 </Modal>
                 ) : false}
              */}
-             
+
             {modalContent}
             <ul className={classes.posts}>
                 <Post author={enteredAuthor} body={enteredBody}/>
