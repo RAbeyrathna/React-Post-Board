@@ -27,7 +27,7 @@ function PostsList({isCreatingPost, onFinishedPost}){
         <> 
             {modalContent}
             <ul className={classes.posts}>
-                <Post author="Nala" body="Bark!"/>
+                {posts.map(post => <Post key={post.body} author={post.author} body={post.body}/>)}
             </ul>
         </>
     );
