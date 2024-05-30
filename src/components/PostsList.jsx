@@ -17,7 +17,7 @@ function PostsList({isCreatingPost, onFinishedPost}){
     if (isCreatingPost){
         modalContent = (
         <Modal onClose={onFinishedPost}>
-            <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler} />
+            <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler} onCancel={onFinishedPost} />
         </Modal>
         );
     }
